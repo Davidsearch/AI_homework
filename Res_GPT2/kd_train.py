@@ -273,7 +273,7 @@ data = load_data(data_dir)
 train_dataset = ImageTextDataset(data, teacher_processor)
 
 # 创建 DataLoader
-teacher_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True, collate_fn=DataCollatorForSeq2Seq(tokenizer=tokenizer, padding=True))
+teacher_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=False, collate_fn=DataCollatorForSeq2Seq(tokenizer=tokenizer, padding=True))
 
 
 
@@ -363,7 +363,7 @@ image_dir = "data"
 dataset = ImageCaptionDataset(caption_file, image_dir, transform=transform)
 
 # 创建数据加载器
-student_dataloader = DataLoader(dataset, batch_size=8, shuffle=True,collate_fn=collate_fn)
+student_dataloader = DataLoader(dataset, batch_size=8, shuffle=False,collate_fn=collate_fn)
 
 student_vocab = tokenizer_GPT.get_vocab()
 teacher_vocab = tokenizer.get_vocab()
