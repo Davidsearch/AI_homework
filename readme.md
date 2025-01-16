@@ -21,8 +21,8 @@
 将其放在文件夹`qwen2-vl_finetune`下，运行
 
 - `train.py` 即可使用LoRA微调Qwen2模型，模型会在微调结束后自动保存到模型文件夹。
-<!-- - `Lora_without_Ada_runable.py` 这个是Lora微调的另一个实现和`train.py`类似 -->
-<!-- - `` -->
+- `Lora_without_Ada_runable.py` 这个是Lora微调的另一个实现和`train.py`类似
+- `Lora_deepspeed.py`这个是使用了deepspeed下进行的实验。
 - `test.py` 设置模型名称，即可使用对应模型对单张图片进行测试
 
 训练完成之后，使用`val_bleu.py`进行评测，修改模型路径，即可加载不同的Qwen2模型进行bleu分数的评测
@@ -36,7 +36,7 @@
 ### 第一轮训练
 运行`blip/first_fine_tune_blip.py`（工作目录在blip下），即可使用train数据集对blip进行微调，最终会计算相应的bleu分数，以及效果图。
 ### 第二轮训练
-第二轮训练需要Qwen2模型生成对应的训练集用于第二轮的训练，这个数据集的图像部分是test,而captions则是由Qwen2生成，运行`qwen2-vl_fine`文件夹下的`val_blue1.py`则生成`
+第二轮训练需要Qwen2模型生成对应的训练集用于第二轮的训练，这个数据集的图像部分是test,而captions则是由Qwen2生成，运行`qwen2-vl_fine`文件夹下的`make_test.py`则生成`
 `test.txt`。
 确保这test文件夹和test.txt文件存在后，运行`second_fine_tune.py`,进行第二轮的训练。这也可以通过设置模型路径，从blip-base开始训练。
 ### 验证
